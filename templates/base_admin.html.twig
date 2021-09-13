@@ -14,6 +14,13 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% include "shared/_navbar_admin.html.twig" %}
+        
+        <div class="container py-5">
+        {% block body %}
+        
+        {% endblock %}
+        </div>
+        
     </body>
 </html>
