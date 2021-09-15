@@ -1,39 +1,50 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User index{% endblock %}
+{% block title %}Liste des utilisateur
+{% endblock %}
 
 {% block body %}
-    <h1>User index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Email</th>
-                <th>Roles</th>
-                <th>Password</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for user in users %}
-            <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-                <td>{{ user.password }}</td>
-                <td>
-                    <a href="{{ path('user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+	<div class="container pt-5">
 
-    <a href="{{ path('user_new') }}">Create new</a>
+		<div class="row col-10">
+
+			<h1>utilisateurs</h1>
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Email</th>
+						<th>Roles</th>
+						<th>Password</th>
+						<th>actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for user in users %}
+						<tr>
+							<td>{{ user.id }}</td>
+							<td>{{ user.email }}</td>
+							<td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+							<td>{{ user.password }}</td>
+							<td>
+								<a class="btn btn-primary" href="{{ path('user_show', {'id': user.id}) }}">voir</a>
+								<a class="btn btn-warning" href="{{ path('user_edit', {'id': user.id}) }}">modifier</a>
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="5">Aucun enregristrement trouvé</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+
+			<a class="btn btn-success" href="{{ path('user_new') }}">Créer un utilisateur</a>
+
+		</div>
+
+	</div>
+
 {% endblock %}

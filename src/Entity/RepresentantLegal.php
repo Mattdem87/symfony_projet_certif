@@ -33,12 +33,12 @@ class RepresentantLegal
     private $numero;
 
     /**
-     * @ORM\ManyToOne(targetEntity=patient::class, inversedBy="representantLegals")
+     * @ORM\ManyToOne(targetEntity=Patient::class, inversedBy="representantLegals")
      */
     private $id_patient;
 
     /**
-     * @ORM\ManyToOne(targetEntity=adresse::class, inversedBy="representantLegals")
+     * @ORM\ManyToOne(targetEntity=Adresse::class, inversedBy="representantLegals")
      */
     private $adresse_id;
 
